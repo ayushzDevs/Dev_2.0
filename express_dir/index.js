@@ -12,5 +12,6 @@ app.listen(port,()=>{
 });
 
 app.use((req , res)=>{
+    console.log(req);
     console.log("request recieved");
 })
