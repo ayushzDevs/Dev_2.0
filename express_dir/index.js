@@ -12,6 +12,9 @@ app.listen(port,()=>{
 });
 
 app.use((req , res)=>{
-    console.log(req);
+    // console.log(req);
     console.log("request recieved");
-})
+    res.send(
+        "<h1>Hello, World!</h1>"
+    );
+});
