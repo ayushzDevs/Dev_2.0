@@ -33,6 +33,10 @@ app.get("/help",(req,res)=>{
     res.send("you contacted help path");
 });
 
+app.post("/",(req,res)=>{
+    res.send("you send a request to root by post")
+})
+
 app.use((req,res)=>{
     res.send("this path does not existS")
 })
