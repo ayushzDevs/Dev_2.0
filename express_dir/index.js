@@ -22,20 +22,13 @@ app.listen(port,()=>{
 
 
 app.get("/",(req,res)=>{
-    res.send("you contacted root path");
+    res.send("hello i am root");
 });
 
-app.get("/search",(req,res)=>{
-    res.send("you contacted search path");
+app.get("/:username/:id",(req,res)=>{
+    let {username,id} = req.params;
+    res.send(`hello ${username} with id ${id}`);
 });
-
-app.get("/help",(req,res)=>{
-    res.send("you contacted help path");
-});
-
-app.post("/",(req,res)=>{
-    res.send("you send a request to root by post")
-})
 
 app.use((req,res)=>{
     res.send("this path does not existS")
