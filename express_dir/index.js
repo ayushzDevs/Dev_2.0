@@ -30,6 +30,16 @@ app.get("/:username/:id",(req,res)=>{
     res.send(`hello ${username} with id ${id}`);
 });
 
-app.use((req,res)=>{
-    res.send("this path does not existS")
+
+
+app.get("/search",(req,res)=>{
+   let {q} = req.query;
+   console.log(q);
+    res.send(`search results for query : ${q}`);
+
 })
+
+
+// app.use((req,res)=>{
+//     res.send("this path does not existS")
+// })
