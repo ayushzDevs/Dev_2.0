@@ -42,7 +42,7 @@ app.get("/ig/:username",(req,res)=>{
     res.render("ig.ejs", {data});
 
     // console.log(data)
-})
+});
 
 
 
