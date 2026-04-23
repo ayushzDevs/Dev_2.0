@@ -1,0 +1,23 @@
+{
+  "name": "miscelaneous",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayushzDevs/Dev_2.0.git"
+  },
+  "author": "Ayush",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayushzDevs/Dev_2.0/issues"
+  },
+  "homepage": "https://github.com/ayushzDevs/Dev_2.0#readme",
+  "description": "",
+  "dependencies": {
+    "ejs": "^5.0.2",
+    "express": "^5.2.1"
+  }
+}
