@@ -6,7 +6,7 @@ const port = 8080;
 
 app.set("view engine","ejs");
 
-app.get("/",(req,res)=>{
+app.get("/hello",(req,res)=>{
     res.render("home.ejs");
 
 });

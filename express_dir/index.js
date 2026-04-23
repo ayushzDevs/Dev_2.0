@@ -40,6 +40,6 @@ app.get("/search",(req,res)=>{
 })
 
 
-// app.use((req,res)=>{
-//     res.send("this path does not existS")
-// })
+app.use((req,res)=>{
+    res.send("this path does not existS")
+});
