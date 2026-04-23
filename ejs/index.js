@@ -18,7 +18,8 @@ app.get("/hello",(req,res)=>{
 });
 
 app.get("/rolldice",(req,res)=>{
-    res.render("rolldice.ejs");
+    let random_num = Math.floor(Math.random()*6)+1;
+    res.render("rolldice.ejs", {num : random_num});
     
 });
 app.listen(port,()=>{
