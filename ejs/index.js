@@ -19,9 +19,21 @@ app.get("/hello",(req,res)=>{
 
 app.get("/rolldice",(req,res)=>{
     let random_num = Math.floor(Math.random()*6)+1;
-    res.render("rolldice.ejs", {num : random_num});
+    res.render("rolldice.ejs", {random_num});
     
 });
+
+
+
+// ig basic template
+
+app.get("/ig/:username",(req,res)=>{
+    let {username} = req.params;
+    res.render("ig.ejs", {username});
+})
+
+
+
 app.listen(port,()=>{
     console.log(`Server is running on port ${port}`);
 });
