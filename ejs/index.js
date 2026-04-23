@@ -12,7 +12,7 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"/views"));
 
 app.get("/",(req,res)=>{
-    res.send("Hello World");
+    res.render("home.ejs");
 });
 
 // app.get("/hello",(req,res)=>{
