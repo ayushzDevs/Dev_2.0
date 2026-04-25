@@ -59,6 +59,9 @@ class Dog extends Mammal{
     bark(){
         console.log("wooff...");
     }
+    eat(){
+        console.log("Dog is eating"); //overwrites the eat method of parent class
+    }
 }
 
 
