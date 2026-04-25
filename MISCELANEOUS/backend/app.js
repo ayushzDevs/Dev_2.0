@@ -33,12 +33,13 @@ function Person(name,age){
     }
 };
 
-
-let p1 = new Person("Ayush",21);
-let p2 = new Person("Shohini",20);
-
 Person.prototype.talk = function(){
             console.log(`my name is ${this.name} and my age is ${this.age}`);
         
 };
+
+let p1 = new Person("Ayush",21);
+let p2 = new Person("Shohini",20);
+
+
 
