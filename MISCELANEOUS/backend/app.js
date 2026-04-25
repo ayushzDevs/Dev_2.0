@@ -41,5 +41,3 @@ Person.prototype.talk = function(){
 let p1 = new Person("Ayush",21);
 let p2 = new Person("Shohini",20);
 
-
-
