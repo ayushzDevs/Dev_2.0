@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const port = 8080;
 const path = require("path");
+const {v4:uuidv4} = require("uuid");
+
+
 
 
 // middlewares
@@ -14,17 +17,20 @@ app.use(express.json());
 
 let posts = [
     {
-        id : 1,
+        // id : Date.now().toString(),
+        id: uuidv4(),
         username : "ayush",
         content : "This is my first post"
     },
     {
-        id : 2,
+        // id : Date.now().toString(),
+        id: uuidv4(),
         username : "shohini",
         content : "This is my second post"
     },
     {
-        id : 3,
+        // id : Date.now().toString(),
+        id: uuidv4(),
         username : "baban",
         content : "This is my third post"
     },
@@ -42,15 +48,12 @@ app.get("/post/new",(req,res)=>{
 
 app.post("/posts",(req,res)=>{
     let {username, content} = req.body;
-    posts.push({username,content})
+    // let newPost = {id: Date.now().toString(), username, content};
+    let newPost = {id:uuidv4(),username,content};
+    posts.push(newPost);
     res.redirect("/posts");
 
 })
-
-
-
-
-
 
 
 app.get("/posts/:id",(req,res)=>{
