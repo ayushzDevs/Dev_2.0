@@ -14,14 +14,17 @@ app.use(express.json());
 
 let posts = [
     {
+        id : 1,
         username : "ayush",
         content : "This is my first post"
     },
     {
+        id : 2,
         username : "shohini",
         content : "This is my second post"
     },
     {
+        id : 3,
         username : "baban",
         content : "This is my third post"
     },
@@ -34,6 +37,7 @@ app.get("/posts",(req,res)=>{
 app.get("/post/new",(req,res)=>{
     res.render("new.ejs");
 })
+
 
 
 app.post("/posts",(req,res)=>{
@@ -49,6 +53,11 @@ app.post("/posts",(req,res)=>{
 
 
 
+app.get("/posts/:id",(req,res)=>{
+    let {id} = req.params;
+    let post = posts.find((post)=>post.id==id)
+    res.render("show.ejs",{post});
+})
 
 
 
