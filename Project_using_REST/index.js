@@ -82,6 +82,18 @@ app.get("/posts/:id/edit",(req,res)=>{
     res.render("edit.ejs",{post})
 })
 
+app.delete("/posts/:id",(req,res)=>{
+    let {id}= req.params;
+    posts = posts.filter((post)=> post.id !== id);
+    res.redirect("/posts");
+    
+})
+
+// app.get("/posts/:id/delete",(req,res)=>{
+//     let {id} = req.params;
+//     let post = posts.find((post)=> post.id==id);
+//     res.render("delete.ejs",{post})
+// })
 
 app.listen(port,()=>{
     console.log(`Server is running on port ${port}`);
