@@ -11,7 +11,7 @@ app.use(method_o("_method"))
 
 
 // middlewares
-app.set("view engine","project_mini");
+app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));
@@ -26,6 +26,10 @@ const instadata = require("./data.json");
 app.get("/home",(req,res)=>{
     res.render("home.ejs");
     
+})
+
+app.get("/home/:username",(req,res)=>{
+    res.render("home.ejs");
 })
 
 
@@ -45,9 +49,9 @@ app.get("/search",(req,res)=>{
 
 
 
-app.delete("/home/:username",(req,res)=>{
-    let {username}= req.params;
-    instadata = instadata.filter((home)=> home.name !== username);
+app.delete("/search",(req,res)=>{
+    let {username}= req.query;
+    delete instadata[username];
     res.redirect("/home");
 
 })
