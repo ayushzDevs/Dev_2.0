@@ -17,8 +17,7 @@ app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
-
-
+const instadata = require("./data.json");
 
 
 
@@ -32,7 +31,7 @@ app.get("/home",(req,res)=>{
 
 
 app.get("/search",(req,res)=>{
-    const instadata = require("./data.json");
+  
     let {username} = req.query;
     let data = instadata[username];
     if(!data){
@@ -44,6 +43,14 @@ app.get("/search",(req,res)=>{
 
 
 
+
+
+app.delete("/home/:username",(req,res)=>{
+    let {username}= req.params;
+    instadata = instadata.filter((home)=> home.name !== username);
+    res.redirect("/home");
+
+})
 
 
 
