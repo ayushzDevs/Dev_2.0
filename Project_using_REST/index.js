@@ -3,6 +3,9 @@ const app = express();
 const port = 8080;
 const path = require("path");
 const {v4:uuidv4} = require("uuid");
+const method_o = require("method-override");
+
+app.use(method_o("_method"))
 
 
 
@@ -60,9 +63,24 @@ app.get("/posts/:id",(req,res)=>{
     let {id} = req.params;
     let post = posts.find((post)=>post.id==id)
     res.render("show.ejs",{post});
+});
+
+
+app.patch("/posts/:id",(req,res)=>{
+    let {id} = req.params;
+    let {newcontent} = req.body;
+    let post = posts.find((post)=>post.id==id)
+    post.content = newcontent;
+    res.redirect("/posts");
+    console.log(post);
+    
+});
+
+app.get("/posts/:id/edit",(req,res)=>{
+    let {id} = req.params;
+    let post = posts.find((post)=> post.id==id);
+    res.render("edit.ejs",{post})
 })
-
-
 
 
 app.listen(port,()=>{
