@@ -1,3 +1,5 @@
+-- Active: 1777357827338@@localhost@3306@mysql
+-- Active: 1777357827338@@localhost@3306@college
 CREATE DATABASE IF NOT EXISTS college;
 DROP DATABASE IF EXISTS college;
 USE college;
@@ -22,3 +24,4 @@ SELECT * FROM students;
 UPDATE students set age =22 WHERE name="Ayush";
 SELECT * FROM students;
 
+select name, course from students where age between 20 and 22;

@@ -53,4 +53,6 @@ SHOW DATABASES;
 
 select * from instagram.post;
 
-select * from user where Followers>=900;
+select * FROM instagram.user WHERE Followers>=900 AND FOLLOWING>=2;
+
+select Name,Email FROM instagram.user WHERE Email in ("theshohinidas@gmail.com");
