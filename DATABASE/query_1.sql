@@ -29,3 +29,6 @@ select name, course from students where age between 20 and 22;
 
 -- using group by clause
 SELECT COUNT(id) from college.students group by course;
+
+-- having clause
+SELECT course, COUNT(id) from college.students group by course HAVING COUNT(age)<22;
