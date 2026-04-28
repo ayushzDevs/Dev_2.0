@@ -20,4 +20,10 @@ INSERT INTO user(Name,Email,Followers,FOLLOWING,Password) VALUES
 ("Sonia","thesoniachakraborty@gmail.com",1200,4,220523)
 
 
+
+UPDATE user set  Followers = 0 WHERE Followers IS NULL;
+
+INSERT INTO user(Name,Email,Followers,FOLLOWING,Password) VALUES
+("Test","test@gmail.com",0,0,123456);
+
 SELECT * FROM user;
