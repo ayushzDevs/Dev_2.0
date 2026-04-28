@@ -53,3 +53,4 @@ SHOW DATABASES;
 
 select * from instagram.post;
 
+select * from user where Followers>=900;
