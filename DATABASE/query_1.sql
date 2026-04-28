@@ -32,3 +32,25 @@ SELECT COUNT(id) from college.students group by course;
 
 -- having clause
 SELECT course, COUNT(id) from college.students group by course HAVING COUNT(age)<22;
+
+update students set course = "ECE" where course = "ME";
+SELECT * FROM students;
+
+DELETE FROM students where course = "ECE";
+SELECT * FROM students;
+
+-- using ALTER TABLE
+
+
+ALTER TABLE student_info ADD COLUMN grade VARCHAR(2);
+SELECT * FROM student_info;
+
+ALTER TABLE student_info DROP COLUMN grade;
+SELECT * FROM student_info;
+
+ALTER TABLE student_info RENAME TO students;
+SELECT * FROM students;
+
+-- using Truncate
+TRUNCATE TABLE student_info;
+SELECT  grade FROM student_info;
