@@ -1,6 +1,8 @@
--- Active: 1777357827338@@localhost@3306@instagram
+-- Active: 1777357827338@@localhost@3306@mysql
 CREATE DATABASE IF NOT EXISTS instagram;
 USE instagram;
+
+DROP DATABASE IF EXISTS instagram;
 
 
 CREATE TABLE IF NOT EXISTS user(
@@ -27,3 +29,27 @@ INSERT INTO user(Name,Email,Followers,FOLLOWING,Password) VALUES
 ("Test","test@gmail.com",0,0,123456);
 
 SELECT * FROM user;
+
+
+CREATE TABLE IF NOT EXISTS post(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    content VARCHAR(255) NOT NULL,
+    Likes INT NOT NULL,
+    Post_Created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+
+INSERT INTO post(user_id,content,Likes) VALUES
+(1,"Hello World!",100),
+(2,"My first post!",50),
+(3,"Enjoying the day!",75),
+(4,"Having fun with SQL!",120);
+
+
+
+SHOW DATABASES;
+
+select * from instagram.post;
+
