@@ -56,3 +56,22 @@ select * from instagram.post;
 select * FROM instagram.user WHERE Followers>=900 AND FOLLOWING>=2;
 
 select Name,Email FROM instagram.user WHERE Email in ("theshohinidas@gmail.com");
+
+-- use limit clause
+SELECT * FROM instagram.post LIMIT 2;
+
+-- use order by clause
+SELECT * FROM instagram.post ORDER BY Likes ASC;
+
+
+-- aggregate functions
+SELECT MAX(Likes) FROM instagram.post;
+
+
+SELECT MIN(Likes) FROM instagram.post;
+
+SELECT AVG(Likes) FROM instagram.post;
+
+SELECT SUM(Likes) FROM instagram.post;
+
+SELECT COUNT(Likes) FROM instagram.post;
