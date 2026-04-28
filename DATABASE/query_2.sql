@@ -75,3 +75,5 @@ SELECT AVG(Likes) FROM instagram.post;
 SELECT SUM(Likes) FROM instagram.post;
 
 SELECT COUNT(Likes) FROM instagram.post;
+
+

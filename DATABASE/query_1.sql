@@ -25,3 +25,7 @@ UPDATE students set age =22 WHERE name="Ayush";
 SELECT * FROM students;
 
 select name, course from students where age between 20 and 22;
+
+
+-- using group by clause
+SELECT COUNT(id) from college.students group by course;
