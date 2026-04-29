@@ -19,3 +19,12 @@ INSERT INTO Teacher(id , name , subject , salary) VALUES
 select Teacher.name FROM Teacher WHERE Teacher.salary > 55000.00;
 
 ALTER TABLE Teacher CHANGE COLUMN salary CTC INT;
+
+UPDATE Teacher SET CTC = CTC + .25 * CTC;
+select * from Teacher;
+
+ALTER TABLE Teacher ADD COLUMN City VARCHAR(50) DEFAULT "Gurgaon";
+select * from Teacher;
+
+ALTER TABLE Teacher DROP COLUMN CTC;
+select * from Teacher;
