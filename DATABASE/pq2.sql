@@ -13,3 +13,5 @@ INSERT INTO Student(roll_no , name , city , marks) VALUES
 (2 , "bharat","gurgaon", 90),
 (3, "charan" , "noida", 78),
 (4, "divya", "delhi", 92);
+
+select * from Student;
