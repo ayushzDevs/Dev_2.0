@@ -9,4 +9,4 @@ let getRandomUser = ()=>{
     }
 }
 
-console.log(getRandomUser())
+console.log(getRandomUser());
