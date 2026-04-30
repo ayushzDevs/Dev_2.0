@@ -1,10 +1,17 @@
 -- Active: 1777357827338@@localhost@3306@mysql
+DROP DATABASE IF EXISTS user_db;
+
 CREATE DATABASE IF NOT EXISTS user_db;
+
 USE user_db;
 
 CREATE TABLE temp (
-    id INT PRIMARY KEY
+    id VARCHAR(50) PRIMARY KEY,
+    username VARCHAR(50) UNIQUE,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(50) NOT NULL
 );
+
 
 
 SHOW DATABASES;
