@@ -21,6 +21,9 @@ catch(e){
     console.log(e);
 }
 
+connection.end();
+
+
 let getRandomUser = ()=>{
     return {
     userId: faker.string.uuid(),
