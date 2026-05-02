@@ -5,13 +5,14 @@ CREATE DATABASE IF NOT EXISTS user_db;
 
 USE user_db;
 
-CREATE TABLE temp (
+
+DROP TABLE temp;
+CREATE TABLE users (
     id VARCHAR(50) PRIMARY KEY,
     username VARCHAR(50) UNIQUE,
     email VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(50) NOT NULL
 );
-
 
 
 SHOW DATABASES;

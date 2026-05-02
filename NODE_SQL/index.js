@@ -9,9 +9,9 @@ const connection = mysql.createConnection({
   password: "1905232223"
 });
 
-
+let q = "SHOW TABLES";
 try{
-    connection.query( "SHOW TABLES" , (err, results)=>{
+    connection.query( q , (err, results)=>{
     if(err) throw err;
     console.log(results);
     console.log(results[0]);
