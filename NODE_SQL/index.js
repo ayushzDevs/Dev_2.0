@@ -9,12 +9,20 @@ const connection = mysql.createConnection({
   password: "1905232223"
 });
 
-let q = "SHOW TABLES";
+
+// inserting new data into the database
+let q = "INSERT INTO users (id , username , email , password) VALUES ?";
+let users = [
+    ["124", "Ayush@2404", "ab4@gmail.com", "12434568"],
+     ["456", "Ayush@2005", "def@gmail.com", "87654321"],
+
+
+];
+
 try{
-    connection.query( q , (err, results)=>{
+    connection.query( q , [users], (err, results)=>{
     if(err) throw err;
     console.log(results);
-    console.log(results[0]);
 }
 );
 }

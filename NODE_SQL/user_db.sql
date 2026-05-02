@@ -16,4 +16,4 @@ CREATE TABLE users (
 
 
 SHOW DATABASES;
-SHOW TABLES FROM user_db;
+SELECT * FROM users;
