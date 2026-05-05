@@ -4,9 +4,9 @@ const express = require("express");
 const app = express();
 const port = 8080;
 const path = require("path");
+const methodoverride = require("method-override");
 
-
-
+app.use(methodoverride("_method"));
 app.set("view engine" , "ejs");
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
@@ -101,13 +101,28 @@ app.get("/user/:id/edit", (req, res) => {
 
 app.patch("/user/:id", (req,res)=>{
     let {id} = req.params;
-    let {username , email , password} = req.body;
-    let q = `UPDATE users SET username = '${username}' , email = '${email}' , password = '${password}' WHERE id = '${id}'`;
+    let {username , email , password:formpass} = req.body;
+    let q = `SELECT * FROM users WHERE id = '${id}'`;
+
+    // let q = `UPDATE users SET username = '${username}' WHERE id = '${id}'`;
 
     try{
         connection.query(q, (err,result)=>{
+
+         
             if(err) throw err;
-            res.redirect("/user");
+            let user = JSON.parse(JSON.stringify(result))[0];
+            if (formpass != user.password) {
+                res.send("password is incorrect");
+            }
+            else{
+                let q2 = `UPDATE users SET username = '${username}' WHERE id = '${id}'`;
+                connection.query(q2, (err, result)=>{
+                    if(err) throw err;
+                    res.redirect("/user");
+                });
+            }
+            // res.redirect("/user");
         });
 
     }

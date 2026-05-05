@@ -7,20 +7,14 @@
 </head>
 <body>
     <h2>You are about to edit this user : <%= user.email %></h2>
-    <form method="post" action="/user/<%= user.id %>">
+    <form method="post" action="/user/<%= user.id %>?_method=patch">
         <textarea name = "username"> <%= user.username %></textarea>
         <button>Update Username</button>
         <input type="password" name = "password" placeholder="Enter password">
 
     </form>
     <br>
-    <form method="post" action="/user/<%= user.id %>">
-        <button>update email</button>
-        <input type="email" name = "email" placeholder="Enter new email">
-    </form>
-    <br>
-    <br>
-    <a href="/users">Go Back to Users List</a>
+    <a href="/user">Go Back to Users List</a>
 
 
 </body>
