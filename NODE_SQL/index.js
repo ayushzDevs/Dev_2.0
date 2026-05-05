@@ -3,6 +3,22 @@ const mysql = require("mysql2");
 const express = require("express");
 const app = express();
 const port = 8080;
+const path = require("path");
+
+
+
+app.set("view engine" , "ejs");
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.set("views",path.join(__dirname, "/views"));
+
+
+
+
+
+
+
+
 
 
 const connection = mysql.createConnection({
@@ -35,17 +51,20 @@ let getRandomUser = ()=>{
 
 
 app.get("/",(req,res)=>{
-    let q = "SELECT COUNT (*) FROM users";
+    let q = "SELECT count(*) FROM users";
 
     try{
         connection.query(q , (err , result)=>{
             if(err) throw err;
-            res.send(result);
+            let count = JSON.stringify(result[0]["count(*)"]);
+            res.render("home.ejs",{count})
         })
     }
     catch(e){
         console.log(e);
     }
+
+    connection.end();
 
 
 });
