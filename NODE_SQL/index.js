@@ -1,5 +1,8 @@
 const {faker} = require("@faker-js/faker");
 const mysql = require("mysql2");
+const express = require("express");
+const app = express();
+const port = 8080;
 
 
 const connection = mysql.createConnection({
@@ -47,3 +50,19 @@ catch(e){
 connection.end();
 
 
+
+
+
+
+
+
+
+app.get("/",(req,res)=>{
+    res.send("welcom to home page")
+})
+
+
+
+app.listen(port , ()=>{
+    console.log(`server is running at port ${port}`);
+})
