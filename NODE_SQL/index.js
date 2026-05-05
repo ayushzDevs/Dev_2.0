@@ -23,31 +23,8 @@ let getRandomUser = ()=>{
 }
 
 
-let data = [];
-
-for(let i = 1; i<=100; i++){
-    data.push(getRandomUser());
-}
 
 
-
-// inserting new data into the database
-let q = "INSERT INTO users (id , username , email , password) VALUES ?";
-
-
-try{
-    connection.query( q , [data], (err, results)=>{
-    if(err) throw err;
-    console.log(results);
-}
-);
-}
-
-catch(e){
-    console.log(e);
-}
-
-connection.end();
 
 
 
@@ -58,11 +35,44 @@ connection.end();
 
 
 app.get("/",(req,res)=>{
-    res.send("welcom to home page")
-})
+    let q = "SELECT COUNT (*) FROM users";
+
+    try{
+        connection.query(q , (err , result)=>{
+            if(err) throw err;
+            res.send(result);
+        })
+    }
+    catch(e){
+        console.log(e);
+    }
+
+
+});
+
 
 
 
 app.listen(port , ()=>{
     console.log(`server is running at port ${port}`);
 })
+
+
+
+// inserting new data into the database
+// let q = "INSERT INTO users (id , username , email , password) VALUES ?";
+
+
+// try{
+//     connection.query( q , [data], (err, results)=>{
+//     if(err) throw err;
+//     console.log(results);
+// }
+// );
+// }
+
+// catch(e){
+//     console.log(e);cl
+// }
+
+// connection.end();
