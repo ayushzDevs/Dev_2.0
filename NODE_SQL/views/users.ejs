@@ -19,6 +19,13 @@
         <td><%= User.username %></td>
         <td><%= User.email %></td>
         <td><%= User.password %></td>
+        <td>
+            <form method="get" action="/user/<%=User.id %>/edit">
+            <button>Edit Username</button>
+        </form>
+
+        </td>
+        
     </tr>
 <% }%>
 

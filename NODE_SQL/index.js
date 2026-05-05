@@ -75,9 +75,52 @@ app.get("/user",(req,res)=>{
         console.log(e);
     }
 
-    
+})
+
+
+
+app.get("/user/:id/edit", (req, res) => {
+    let {id} = req.params;
+    let q = `SELECT * FROM users WHERE id = '${id}'`;
+
+    try{
+        connection.query(q, (err,result)=>{
+            let user = JSON.parse(JSON.stringify(result))[0];
+            if(err) throw err;
+            res.render("edit.ejs", {user});
+        });
+
+
+    }
+    catch(e){
+        console.log(e);
+    }
 
 })
+
+
+app.patch("/user/:id", (req,res)=>{
+    let {id} = req.params;
+    let {username , email , password} = req.body;
+    let q = `UPDATE users SET username = '${username}' , email = '${email}' , password = '${password}' WHERE id = '${id}'`;
+
+    try{
+        connection.query(q, (err,result)=>{
+            if(err) throw err;
+            res.redirect("/user");
+        });
+
+    }
+    catch(e){
+        console.log(e);
+    }
+
+});
+
+
+
+
+
 
 
 
