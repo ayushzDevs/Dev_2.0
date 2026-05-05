@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Data</title>
     <style>
-        table , tr , th{
+        table , tr , td{
             border: 1px solid black;
         }
     </style>
@@ -13,12 +13,15 @@
 <body>
     <h2>All the Users are:</h2>
     <table> 
-        <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Password</th>
-        </tr>
+        <%for(User of users){%>
+    <tr>
+        <td><%= User.id %></td>
+        <td><%= User.username %></td>
+        <td><%= User.email %></td>
+        <td><%= User.password %></td>
+    </tr>
+<% }%>
+
     </table>
     
 </body>

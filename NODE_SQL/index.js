@@ -67,8 +67,8 @@ app.get("/user",(req,res)=>{
     try{
         connection.query(q, (err, result)=>{
             if(err) throw err;
-            let results = JSON.parse(JSON.stringify(result));
-            res.render("users.ejs",{results});
+            let users = JSON.parse(JSON.stringify(result));
+            res.render("users.ejs",{users});
         })
     }
     catch(e){
