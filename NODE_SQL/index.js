@@ -44,12 +44,6 @@ let getRandomUser = ()=>{
 
 
 
-
-
-
-
-
-
 app.get("/",(req,res)=>{
     let q = "SELECT count(*) FROM users";
 
@@ -64,11 +58,26 @@ app.get("/",(req,res)=>{
         console.log(e);
     }
 
-    connection.end();
-
-
 });
 
+
+app.get("/user",(req,res)=>{
+    let q = "SELECT * FROM users"
+
+    try{
+        connection.query(q, (err, result)=>{
+            if(err) throw err;
+            let results = JSON.parse(JSON.stringify(result));
+            res.render("users.ejs",{results});
+        })
+    }
+    catch(e){
+        console.log(e);
+    }
+
+    
+
+})
 
 
 
