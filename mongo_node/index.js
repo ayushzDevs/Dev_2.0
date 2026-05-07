@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://root:Ayush1980@cluster0.vnt1fdx.mongodb.net/?appName=Cluster0');
+mongoose.connect(process.env.MONGODB_URI);
 
 
 // Define a schema
