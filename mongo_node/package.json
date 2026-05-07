@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "mongo": "^0.1.0",
     "mongoose": "^9.6.1"
   }
