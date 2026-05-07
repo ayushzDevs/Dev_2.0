@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ayushzDevs/Dev_2.0#readme",
   "dependencies": {
+    "mongo": "^0.1.0",
     "nodemon": "^3.1.14",
     "random-words": "^2.0.1"
   }
