@@ -4,25 +4,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI);
 
+main().then((res)=>{ console.log('Connected to MongoDB');})
+.catch(err=> console.log(err));
 
-// Define a schema
-const userSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  age: Number
-});
-
-// Create a model
-const User = mongoose.model('User', userSchema);
-
-// Example usage: Create a new user
-const newUser = new User({
-  name: 'John Doe',
-  email: 'john.doe@example.com',
-  age: 30
-});
-
-console.log('New user created:', newUser);
-
+async function main() {
+  await mongoose.connect(process.env.MONGODB_URI);
+}
