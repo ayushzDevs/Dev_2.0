@@ -32,6 +32,7 @@ app.get("/",(req,res)=>{
 });
 
 
+
 // index route
 app.get("/chats", async(req,res)=>{
     let chats = await Chat.find().then((chats)=>{
@@ -41,6 +42,10 @@ app.get("/chats", async(req,res)=>{
 })
 
 
+// New route
+app.get("/chats/new",(req,res)=>{
+    res.render("new.ejs");
+})
 
 
 app.listen(8080,()=>{
