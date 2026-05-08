@@ -22,10 +22,14 @@ const emp1 = new Employee({
   age: 30,
   email: 'ash@123mail.com'});
 
-emp1.save()
-.then(() => console.log('Employee saved'))
-.catch(err => console.log(err));
+// emp1.save()
+// .then(() => console.log('Employee saved'))
+// .catch(err => console.log(err));
 
-Employee.find()
-.then(employees => console.log(employees))
+Employee.insertMany([
+  { name: 'Alice Smith', age: 28, email: 'ashjj@mail.com'},
+  { name: 'Bob Johnson', age: 35, email: 'mmajbdj@mail.com'},
+  { name: 'Charlie Brown', age: 22, email: 'mmmmmm@mmmmmail.com'}
+])
+.then(()=> console.log('Employees inserted'))
 .catch(err => console.log(err));
