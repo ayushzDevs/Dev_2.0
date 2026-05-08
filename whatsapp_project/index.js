@@ -3,11 +3,15 @@
 const express = require('express');
 const app = express();
 const port = 8080;
+
 const path = require('path');
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
 const mongoose = require('mongoose');
 const Chat = require('./models/chat.js');
+
+app.use(express.static(path.join(__dirname, "public")));
 
 
 // initialize mongoose
