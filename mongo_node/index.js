@@ -49,3 +49,31 @@ const emp1 = new Employee({
 Employee.findOneAndUpdate({name:'Alice Smith'}, {age:15}, {new:false}).then((res)=>{
   console.log(res);
 }).catch(err => console.log(err));
+
+const bookSchema = new mongoose.Schema({
+
+  title:{
+    type:String,
+    required:true
+  },
+  price:{
+    type:Number,
+    required:true
+  },
+  author:{
+    type:String,
+  },
+  publishedDate:{
+    type:Date,
+    default:Date.now
+  }
+
+})
+
+
+
+
+
+
+
+
