@@ -27,6 +27,10 @@ const bookSchema = new mongoose.Schema({
   publishedDate:{
     type:Date,
     default:Date.now
+  },
+  discount:{
+    type:Number,
+    default:0
   }
 
 });
@@ -36,19 +40,26 @@ const bookSchema = new mongoose.Schema({
 const Book = mongoose.model('Book', bookSchema);
 
 
-let book1 = new Book({
-    title:'The Great Gatsby',
-    price:10.99,
-    author:'F. Scott Fitzgerald'
-});
+Book.findByIdAndUpdate("69fde519f3989763c7b534c9", {price: -100}, {runValidators: true})
+.then((res)=>{
+  console.log(res);
+})
+.catch((err)=>{
+  console.log(err);
+})
 
-book1.save()
-.then(() => console.log('Book saved'))
-.catch(err => console.log(err));
+// let book1 = new Book({
+//     title:'Gone Girl',
+//     price:90.99,
+// });
 
-Book.insertMany([
-  { title: 'To Kill a Mockingbird', price: 12.99, author: 'Harper Lee' },
-  { title: '1984', price: 9.99, author: 'George Orwell' },
-  { title: 'Moby Dick', price: 15.99, author: 'Herman Melville' }
-]);
+// book1.save()
+// .then(() => console.log('Book saved'))
+// .catch(err => console.log(err));
+
+// Book.insertMany([
+//   { title: 'To Kill a Mockingbird', price: 12.99, author: 'Harper Lee' },
+//   { title: '1984', price: 9.99, author: 'George Orwell' },
+//   { title: 'Moby Dick', price: 15.99, author: 'Herman Melville' }
+// ]);
 
