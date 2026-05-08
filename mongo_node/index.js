@@ -37,3 +37,11 @@ const emp1 = new Employee({
 Employee.find({age:{$gt:25}}).then((res)=>{
   console.log(res);
 }).catch(err => console.log(err));
+
+// Employee.updateOne({name:'John Doe'}, {age:31}).then((res)=>{
+//   console.log(res);
+// }).catch(err => console.log(err));
+
+Employee.deleteOne({name:'John Doe'}).then((res)=>{
+  console.log(res);
+}).catch(err => console.log(err));
