@@ -1,23 +1,31 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 
-dotenv.config();
-
-// Connect to MongoDB
-
-main().then((res)=>{ console.log('Connected to MongoDB');})
-.catch(err=> console.log(err));
+main().then(()=>{
+  console.log('Connected to MongoDB');
+})
+.catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect('mongodb://localhost:27017/mydb');
 }
-
 
 const userSchema = new mongoose.Schema({
   name: String,
-  email: String,
-  age : Number
+  age: Number,
+  email: String
 })
 
-const User = mongoose.model("User", userSchema);
-const Emloyee = mongoose.model("Employee", userSchema);
+const Employee = mongoose.model('Employee', userSchema);
+
+const emp1 = new Employee({
+  name: 'John Doe',
+  age: 30,
+  email: 'ash@123mail.com'});
+
+emp1.save()
+.then(() => console.log('Employee saved'))
+.catch(err => console.log(err));
+
+Employee.find()
+.then(employees => console.log(employees))
+.catch(err => console.log(err));
