@@ -13,6 +13,9 @@ const Chat = require('./models/chat.js');
 
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(express.urlencoded({extended : true}));
+app.use(express.json());
+
 
 // initialize mongoose
 main().then(()=>{
@@ -47,6 +50,24 @@ app.get("/chats/new",(req,res)=>{
     res.render("new.ejs");
 })
 
+
+// create route
+app.post("/chats", (req,res)=>{
+    let {from, message, to} = req.body;
+    let new_chat = new Chat({
+        from : from,
+        message : message,
+        to : to,
+        createdAt : new Date()
+    })
+    new_chat.save().then(()=>{
+        console.log("Chat saved successfully");
+    })
+    .catch(err => console.log(err));
+
+    res.redirect("/chats");
+
+})
 
 app.listen(8080,()=>{
     console.log(`Server is running on port ${port}`);
