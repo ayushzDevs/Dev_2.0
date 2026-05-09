@@ -1,5 +1,7 @@
 // important requires and initialisations
 
+const methodoverride = require('method-override');
+app.use(methodoverride('_method'));
 const express = require('express');
 const app = express();
 const port = 8080;
@@ -67,6 +69,21 @@ app.post("/chats", (req,res)=>{
 
     res.redirect("/chats");
 
+})
+
+
+// update route
+app.get("/chats/:id/edit", async (req,res)=>{
+    let{id}= req.params;
+    let chat = await Chat.findById(id)
+    res.render("edit.ejs", {chat : chat})
+});
+
+app.put("/chats/:id", async(req,res)=>{
+    let {id} = req.params;
+    let {message} = req.body;
+    await Chat.findByIdAndUpdate(id, {message : message});
+    res.redirect("/chats");
 })
 
 
