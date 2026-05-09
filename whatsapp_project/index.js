@@ -1,7 +1,7 @@
 // important requires and initialisations
 
 const methodoverride = require('method-override');
-app.use(methodoverride('_method'));
+
 const express = require('express');
 const app = express();
 const port = 8080;
@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
+app.use(methodoverride('_method'));
 
 
 // initialize mongoose
@@ -82,7 +83,9 @@ app.get("/chats/:id/edit", async (req,res)=>{
 app.put("/chats/:id", async(req,res)=>{
     let {id} = req.params;
     let {message} = req.body;
-    await Chat.findByIdAndUpdate(id, {message : message});
+    await Chat.findByIdAndUpdate(id, {message : message},
+        {new : true, runValidators : true}
+    );
     res.redirect("/chats");
 })
 
